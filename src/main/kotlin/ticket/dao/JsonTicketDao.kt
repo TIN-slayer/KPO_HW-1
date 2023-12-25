@@ -35,6 +35,7 @@ class JsonTicketDao : TicketDao {
     }
 
     override fun findTicketById(id: Int): TicketEntity {
+        // работает
         return ticketEntities.find { it.id == id } ?: throw TicketDaoNotFoundException("Сеанс с Id $id не найден")
     }
 
