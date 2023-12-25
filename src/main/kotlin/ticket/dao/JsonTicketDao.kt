@@ -5,7 +5,6 @@ import java.io.File
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import jsonDao.JsonDao
-import ticket.dao.TicketDao
 import ticket.dao.exception.TicketDaoNotFoundException
 
 class JsonTicketDao : TicketDao {
