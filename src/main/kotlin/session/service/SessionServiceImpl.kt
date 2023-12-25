@@ -39,7 +39,7 @@ class SessionServiceImpl(private val sessionDao: SessionDao, private val movieSe
         if (price < 0) {
             throw SessionIncorrectDataException("Цена на сеанс меньше нуля")
         }
-        var newId = id;
+        var newId = id
         if (newId == -1) {
             newId = sessionCount++
             println("Добавили сеанс с Id: $newId")
@@ -86,7 +86,7 @@ class SessionServiceImpl(private val sessionDao: SessionDao, private val movieSe
         addSession(newMovieId, newStartDateTime, newPrice, id, newSeatTable, newHasStarted)
     }
 
-    override fun buyTicket(id: Int, row: Int, col: Int) {
+    override fun sellTicket(id: Int, row: Int, col: Int) {
         // могут прокинуть исключения (обрабатываем их в классе интерфейс)
         val session = findSessionById(id)
         val normRow = row + 1

@@ -48,8 +48,8 @@ class UserInterface {
                         "удалить сеанс" -> deleteSession()
                         "начать сеанс" -> startSession()
                         "инфо по билетам" -> ticketService.printTickets()
-                        "купить билет" -> buyTicket()
-                        "вернуть билет" -> refundTicket()
+                        "продать билет" -> sellTicket()
+                        "оформить возврат билета" -> refundTicket()
                         "выход" -> break
                     }
                 } catch (ex: MovieException) {
@@ -170,7 +170,7 @@ class UserInterface {
             }
         }
 
-        private fun buyTicket() {
+        private fun sellTicket() {
             println("Введите id сеанса, номер ряда (от 1 до 5) и место (от 1 до 5) через пробел:")
             try {
                 val args = readln().split(' ')
@@ -178,14 +178,14 @@ class UserInterface {
                     println("Аргументов должно быть 3")
                     return
                 }
-                ticketService.buyTicket(args[0].toInt(), (args[1].toInt() - 1), (args[2].toInt() - 1))
+                ticketService.sellTicket(args[0].toInt(), (args[1].toInt() - 1), (args[2].toInt() - 1))
             } catch (ex: NumberFormatException) {
                 println("id, ряд и место должны быть натуральными числами")
             }
         }
 
         private fun refundTicket() {
-            println("Введите id билета, который хотите вернуть:")
+            println("Введите id билета, на который оформляете возврат:")
             try {
                 val id = readln().toInt()
                 ticketService.refundTicket(id)

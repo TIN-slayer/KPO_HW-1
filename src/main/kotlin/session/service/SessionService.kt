@@ -1,7 +1,5 @@
 package session.service
 
-import movie.service.MovieService
-import session.dao.SessionDao
 import session.entity.SessionEntity
 
 interface SessionService {
@@ -28,7 +26,7 @@ interface SessionService {
         hasStarted: Boolean = false
     )
 
-    fun buyTicket(id: Int, row: Int, col: Int)
+    fun sellTicket(id: Int, row: Int, col: Int)
 
     fun refundTicket(id: Int, row: Int, col: Int)
 

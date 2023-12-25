@@ -27,10 +27,10 @@ class TicketServiceImpl(private val ticketDao: TicketDao, private val sessionSer
         if (row < 0 || row > 4 || col < 0 || col > 4){
             throw TicketIncorrectDataException("Ряд и номер места должны быть от 1 до 5")
         }
-        var newId = id;
+        var newId = id
         if (newId == -1) {
             newId = ticketCount++
-            println("Купили билет ${row + 1}-${col + 1} c Id: $newId на сеанс c id: $sessionId")
+            println("Продали билет ${row + 1}-${col + 1} c Id: $newId на сеанс c id: $sessionId")
         }
         val newTicket = TicketEntity(sessionId, row, col, newId)
         ticketDao.saveTicket(newTicket)
@@ -40,9 +40,9 @@ class TicketServiceImpl(private val ticketDao: TicketDao, private val sessionSer
 
     override fun deleteTicket(id: Int) = ticketDao.deleteTicket(id)
 
-    override fun buyTicket(sessionId: Int, row: Int, col: Int) {
+    override fun sellTicket(sessionId: Int, row: Int, col: Int) {
         // могут прокинуть исключения (обрабатываем их в классе интерфейс)
-        sessionService.buyTicket(sessionId, row, col)
+        sessionService.sellTicket(sessionId, row, col)
         addTicket(sessionId, row, col)
     }
 
@@ -50,7 +50,7 @@ class TicketServiceImpl(private val ticketDao: TicketDao, private val sessionSer
         // могут прокинуть исключения (обрабатываем их в классе интерфейс)
         val ticket = findTicketById(id)
         sessionService.refundTicket(ticket.sessionId, ticket.row, ticket.col)
-        println("Вернули билет (id: ${ticket.id}, ряд: ${ticket.row}, место: ${ticket.col})")
+        println("Оформили возврат на билет с id: ${ticket.id}")
         deleteTicket(id)
     }
 

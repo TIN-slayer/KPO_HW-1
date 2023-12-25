@@ -14,7 +14,7 @@ interface TicketService {
 
     fun deleteTicket(id: Int)
 
-    fun buyTicket(sessionId: Int, row: Int, col: Int)
+    fun sellTicket(sessionId: Int, row: Int, col: Int)
 
     fun refundTicket(id: Int)
 
