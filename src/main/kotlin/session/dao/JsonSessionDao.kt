@@ -9,7 +9,7 @@ import session.dao.exception.SessionDaoNotFoundException
 
 class JsonSessionDao : SessionDao {
     companion object {
-        private const val JSON_PATH = "session.json"
+        private const val JSON_PATH = "data/session.json"
     }
 
     private val sessionEntities: MutableList<SessionEntity>

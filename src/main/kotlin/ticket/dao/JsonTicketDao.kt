@@ -10,7 +10,7 @@ import ticket.dao.exception.TicketDaoNotFoundException
 
 class JsonTicketDao : TicketDao {
     companion object {
-        private const val JSON_PATH = "ticket.json"
+        private const val JSON_PATH = "data/ticket.json"
     }
 
     private val ticketEntities: MutableList<TicketEntity>

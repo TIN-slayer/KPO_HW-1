@@ -10,7 +10,7 @@ import movie.dao.exception.MovieDaoNotFoundException
 class JsonMovieDao : MovieDao {
 
     companion object {
-        private const val JSON_PATH = "movie.json"
+        private const val JSON_PATH = "data/movie.json"
     }
 
     private val movieEntities: MutableList<MovieEntity>
